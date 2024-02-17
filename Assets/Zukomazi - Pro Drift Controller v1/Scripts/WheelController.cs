@@ -25,6 +25,7 @@ public class WheelController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        Debug.Log(Horizontal);
         wheelControl();      
 	}
 
@@ -69,18 +70,19 @@ public class WheelController : MonoBehaviour {
                 }
             }
 
+            float tempSterableWheel = steerableWheels[i].steeringAngle;
 
-
-            if (Horizontal < 0.1)
+            if  (Horizontal < -0.1f)
             {
-                steerableWheels[i].steeringAngle = Mathf.LerpAngle(steerableWheels[i].steeringAngle, -wheelSteeringAngle, Time.deltaTime * wheelRotateSpeed);
-            }
-
-            if (Horizontal > -0.1)
+                steerableWheels[i].steeringAngle = Mathf.LerpAngle(tempSterableWheel, -wheelSteeringAngle, Time.deltaTime * wheelRotateSpeed);
+            }else if (Horizontal > 0.1f)
             {
-                steerableWheels[i].steeringAngle = Mathf.LerpAngle(steerableWheels[i].steeringAngle, wheelSteeringAngle, Time.deltaTime * wheelRotateSpeed);
+                steerableWheels[i].steeringAngle = Mathf.LerpAngle(tempSterableWheel, wheelSteeringAngle, Time.deltaTime * wheelRotateSpeed);
             }
         }
     }
+    private void LateUpdate()
+    {
 
+    }
 }

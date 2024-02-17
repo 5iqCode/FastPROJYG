@@ -17,6 +17,8 @@ public class CarAudio : MonoBehaviour
     public float PitchOffSet5;
     public float PitchOffSet6;
 
+    [SerializeField] private float _audioMultiplayer;
+
     void Start()
     {
 
@@ -43,7 +45,12 @@ public class CarAudio : MonoBehaviour
                 {
                     Engine.volume -= Time.deltaTime;
                 }
-            }      
+            }
+            
+            if (Engine.volume > 0.5f)
+        {
+            Engine.volume =0.5f;
+        }
 
     }
 
