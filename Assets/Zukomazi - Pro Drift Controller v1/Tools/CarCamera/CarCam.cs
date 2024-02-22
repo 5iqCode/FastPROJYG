@@ -42,9 +42,13 @@ public class CarCam : MonoBehaviour
             look = Quaternion.LookRotation(car.forward);
         else
             look = Quaternion.LookRotation(carPhysics.velocity.normalized);
-        
+
         // Rotate the camera towards the velocity vector.
-        look = Quaternion.Slerp(rootNode.rotation, look, cameraRotationSpeed * Time.fixedDeltaTime);                
-        rootNode.rotation = look;
+        if (Mathf.Abs(carPhysics.velocity.magnitude) > 1)
+        {
+            look = Quaternion.Slerp(rootNode.rotation, look, cameraRotationSpeed * Time.fixedDeltaTime);
+            rootNode.rotation = look;
+        }
+
     }
 }

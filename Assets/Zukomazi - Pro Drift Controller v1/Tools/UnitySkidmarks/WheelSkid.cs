@@ -29,6 +29,7 @@ public class WheelSkid : MonoBehaviour {
 	int lastSkid = -1; // Array index for the skidmarks controller. Index of last skidmark piece this wheel used
 	float lastFixedUpdateTime;
 
+	public float _SkidTotal;
     // #### UNITY INTERNAL METHODS ####
 
     protected void Awake() {
@@ -49,10 +50,10 @@ public class WheelSkid : MonoBehaviour {
 				// Gives velocity with +z being the car's forward axis
 				Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
 				float skidTotal = Mathf.Abs(localVelocity.x);
+			_SkidTotal = skidTotal;
+                // Check wheel spin as well
 
-				// Check wheel spin as well
-
-				float wheelAngularVelocity = wheelCollider.radius * ((2 * Mathf.PI * wheelCollider.rpm) / 60);
+                float wheelAngularVelocity = wheelCollider.radius * ((2 * Mathf.PI * wheelCollider.rpm) / 60);
 				float carForwardVel = Vector3.Dot(rb.velocity, transform.forward);
 				float wheelSpin = Mathf.Abs(carForwardVel - wheelAngularVelocity) * WHEEL_SLIP_MULTIPLIER;
 

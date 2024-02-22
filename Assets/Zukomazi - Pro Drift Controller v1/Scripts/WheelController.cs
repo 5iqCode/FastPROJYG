@@ -22,10 +22,16 @@ public class WheelController : MonoBehaviour {
 
     public Rigidbody RB;
 
+    private Quaternion _defoultrotation;
+
+    private void Start()
+    {
+        _defoultrotation = transform.rotation;
+    }
+
     // Update is called once per frame
     void Update ()
     {
-        Debug.Log(Horizontal);
         wheelControl();      
 	}
 
@@ -46,12 +52,22 @@ public class WheelController : MonoBehaviour {
 
             if (Vertical > 0.1)
             {
-                steerableWheels[i].wheelCol.motorTorque = -Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration);
+
+                    steerableWheels[i].wheelCol.motorTorque = -Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration);
+               
             }
 
             if (Vertical < -0.1)
             {
-                steerableWheels[i].wheelCol.motorTorque = Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration * BreakPower);
+                if (Vector3.Dot(RB.velocity, transform.forward) > 0f)
+                {
+                    steerableWheels[i].wheelCol.motorTorque = Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration);
+                }
+                else
+                {
+                    steerableWheels[i].wheelCol.motorTorque = Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration * BreakPower);
+                }
+                
                 RB.drag = 0.3f;
             }
             else
@@ -81,8 +97,18 @@ public class WheelController : MonoBehaviour {
             }
         }
     }
-    private void LateUpdate()
-    {
 
+
+    public void RestartThisMap()
+    {
+        transform.position = new Vector3(0,2,0);
+        transform.rotation = _defoultrotation;
+
+        RB.velocity = Vector3.zero;
+
+        for (int i = 0; i < steerableWheels.Length; i++)
+        {
+            steerableWheels[i].wheelCol.motorTorque = 0;
+        }
     }
 }
