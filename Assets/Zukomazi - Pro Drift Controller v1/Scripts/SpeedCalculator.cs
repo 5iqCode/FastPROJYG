@@ -42,17 +42,17 @@ public class SpeedCalculator : MonoBehaviour
 
         if (_lastPointsForDrift > 1500)
         {
-            _MyltiplyDrift = 5;
+            _MyltiplyDrift = 1.8f;
             MyltiplyDrift.text = "x" + _MyltiplyDrift;
         }
         else if (_lastPointsForDrift > 900)
         {
-            _MyltiplyDrift = 3;
+            _MyltiplyDrift = 1.5f;
             MyltiplyDrift.text = "x"+ _MyltiplyDrift;
         }
         else if (_lastPointsForDrift > 300)
         {
-            _MyltiplyDrift = 2;
+            _MyltiplyDrift = 1.3f;
             MyltiplyDrift.text = "x" + _MyltiplyDrift;
         }
         else

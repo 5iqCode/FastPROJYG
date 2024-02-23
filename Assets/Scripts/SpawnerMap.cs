@@ -18,7 +18,7 @@ public class SpawnerMap : MonoBehaviour
 
 
     [SerializeField] private GameObject _player;
-    private void Start()
+    private void Awake()
     {
         for (int i=0;i< _countSpawnParts;i++)
         {
@@ -46,16 +46,19 @@ public class SpawnerMap : MonoBehaviour
         {
             _marks[i].SetActive(false);
         }
+    }
 
-
+    private void Start()
+    {
 
         GameObject[] _temoObjs = GameObject.FindGameObjectsWithTag("CheckBarrier");
 
-        foreach(GameObject _obj in _temoObjs)
+        foreach (GameObject _obj in _temoObjs)
         {
             Destroy(_obj);
         }
     }
+
 
     [SerializeField] private GameObject _strelka;
     private void FixedUpdate()
@@ -76,7 +79,7 @@ public class SpawnerMap : MonoBehaviour
         {
             _marks[_progress].SetActive(true);
 
-            ChangeMaterialMarks(3);
+            ChangeMaterialMarks(2);
         }
         else
         {
@@ -115,7 +118,6 @@ public class SpawnerMap : MonoBehaviour
             }
             else
             {
-                Debug.Log(_progress + i + "   "+ _marks.Count) ;
                 _marks[_progress + i].SetActive(true) ;
                 _marks[_progress + i].GetComponent<Renderer>().material = _markMaterial_future;
                 _marks[_progress + i].GetComponent<CapsuleCollider>().enabled = false;

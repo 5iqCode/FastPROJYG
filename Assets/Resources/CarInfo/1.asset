@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79f4d0fbef6dc34c815d881222f4131, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  Name: BMW e34
+  CircleSpeed: 4000
+  BreakValue: 100
+  EulerRotate: 45
+  Mass: 1800
+  Car3DObj: {fileID: 3963599516278792428, guid: 477a68840dd5af546be5da5a5707c305, type: 3}

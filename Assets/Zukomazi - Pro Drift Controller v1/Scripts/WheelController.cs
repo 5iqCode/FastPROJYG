@@ -24,8 +24,10 @@ public class WheelController : MonoBehaviour {
 
     private Quaternion _defoultrotation;
 
+    private bool _isMobile;
     private void Start()
     {
+        _isMobile = GameObject.FindGameObjectWithTag("LoadedInfo").GetComponent<LoadedInfo>().isMobile;
         _defoultrotation = transform.rotation;
     }
 
@@ -45,11 +47,11 @@ public class WheelController : MonoBehaviour {
             //Sets default motor speed
             steerableWheels[i].wheelCol.motorTorque = -Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, 0, Time.deltaTime * wheelAcceleration);
 
-            //Motor controls
-
-            Horizontal = Input.GetAxis("Horizontal");
-            Vertical = Input.GetAxis("Vertical");
-
+            if (_isMobile==false)
+            {
+                Horizontal = Input.GetAxis("Horizontal");
+                Vertical = Input.GetAxis("Vertical");
+            }
             if (Vertical > 0.1)
             {
 
@@ -79,10 +81,16 @@ public class WheelController : MonoBehaviour {
             {
                 if (Vector3.Dot(RB.velocity, transform.forward) < 0f)
                 {
-                    steerableWheels[i].wheelCol.motorTorque = Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration * 2);
+                    steerableWheels[i].wheelCol.motorTorque = Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration/2 );
                 }else if (Vector3.Dot(RB.velocity, transform.forward) > 0f)
                 {
-                    steerableWheels[i].wheelCol.motorTorque = -Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration /2);
+                    steerableWheels[i].wheelCol.motorTorque = -Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration/2);
+                }
+                if (GetComponent<SpeedCalculator>().Speed <0.1f)
+                {
+                    RB.velocity = Vector3.zero;
+
+                    steerableWheels[i].wheelCol.motorTorque = 0;
                 }
             }
 

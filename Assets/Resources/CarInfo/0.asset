@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79f4d0fbef6dc34c815d881222f4131, type: 3}
+  m_Name: 0
+  m_EditorClassIdentifier: 
+  Name: "\u0424\u043E\u043B\u044C\u043A\u0441\u0432\u0430\u0433\u0435\u043D"
+  CircleSpeed: 3000
+  BreakValue: 10
+  EulerRotate: 40
+  Mass: 2000
+  Car3DObj: {fileID: 1363621297294756806, guid: 5ebc638e47942ea4eaa2aff6460e9469, type: 3}

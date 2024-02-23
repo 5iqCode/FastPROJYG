@@ -7,6 +7,7 @@ TagManager:
   - Barier
   - CheckBarrier
   - LevelController
+  - LoadedInfo
   layers:
   - Default
   - TransparentFX
