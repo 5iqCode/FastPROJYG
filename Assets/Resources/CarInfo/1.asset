@@ -16,5 +16,6 @@ MonoBehaviour:
   CircleSpeed: 4000
   BreakValue: 100
   EulerRotate: 45
-  Mass: 1800
+  Mass: 2200
   Car3DObj: {fileID: 3963599516278792428, guid: 477a68840dd5af546be5da5a5707c305, type: 3}
+  _coastPoint: 1000

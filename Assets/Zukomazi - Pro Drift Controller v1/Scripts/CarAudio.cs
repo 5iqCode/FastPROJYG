@@ -18,10 +18,11 @@ public class CarAudio : MonoBehaviour
     public float PitchOffSet6;
 
     [SerializeField] private float _audioMultiplayer;
+    private WheelController _wheelController;
 
     void Start()
     {
-
+        _wheelController = GetComponent<WheelController>();
     }
 
     void Update()
@@ -35,7 +36,7 @@ public class CarAudio : MonoBehaviour
     public void EngineVolume()
     {
 
-            if (Input.GetAxis("Vertical") == 1)
+            if (_wheelController.Vertical == 1)
             {
                 Engine.volume += Time.deltaTime;
             }

@@ -30,11 +30,25 @@ public class WheelController : MonoBehaviour {
         _isMobile = GameObject.FindGameObjectWithTag("LoadedInfo").GetComponent<LoadedInfo>().isMobile;
         _defoultrotation = transform.rotation;
     }
-
+    public bool _CanMove =true;
     // Update is called once per frame
     void Update ()
     {
-        wheelControl();      
+        if (_CanMove)
+        {
+            wheelControl();
+        }
+        else
+        {
+            RB.velocity /= 1.05f;
+
+            for (int i = 0; i < steerableWheels.Length; i++)
+            {
+                steerableWheels[i].wheelCol.motorTorque = 0;
+                steerableWheels[i].steeringAngle = 0;
+            }
+        }
+         
 	}
 
     //Applies steering and motor torque
@@ -79,13 +93,20 @@ public class WheelController : MonoBehaviour {
 
             if (Vertical == 0)
             {
-                if (Vector3.Dot(RB.velocity, transform.forward) < 0f)
+                if (steerableWheels[i].wheelCol.motorTorque != 0) 
                 {
-                    steerableWheels[i].wheelCol.motorTorque = Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration/2 );
-                }else if (Vector3.Dot(RB.velocity, transform.forward) > 0f)
-                {
-                    steerableWheels[i].wheelCol.motorTorque = -Mathf.Lerp(steerableWheels[i].wheelCol.motorTorque, wheelMaxSpeed, Time.deltaTime * wheelAcceleration/2);
+                    steerableWheels[i].wheelCol.motorTorque = 0;
                 }
+                if (steerableWheels[i].wheelCol.rotationSpeed > 0)
+                {
+                    steerableWheels[i].wheelCol.rotationSpeed -= 200;
+                }
+                else
+                {
+                    steerableWheels[i].wheelCol.rotationSpeed += 200;
+                }
+                
+                
                 if (GetComponent<SpeedCalculator>().Speed <0.1f)
                 {
                     RB.velocity = Vector3.zero;
@@ -109,7 +130,7 @@ public class WheelController : MonoBehaviour {
 
     public void RestartThisMap()
     {
-        transform.position = new Vector3(0,2,0);
+        transform.position = new Vector3(0,0.75f,0);
         transform.rotation = _defoultrotation;
 
         RB.velocity = Vector3.zero;
@@ -117,6 +138,7 @@ public class WheelController : MonoBehaviour {
         for (int i = 0; i < steerableWheels.Length; i++)
         {
             steerableWheels[i].wheelCol.motorTorque = 0;
+            steerableWheels[i].steeringAngle = 0;
         }
     }
 }

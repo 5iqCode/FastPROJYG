@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   Name: "\u0424\u043E\u043B\u044C\u043A\u0441\u0432\u0430\u0433\u0435\u043D"
-  CircleSpeed: 3000
+  CircleSpeed: 1500
   BreakValue: 10
   EulerRotate: 40
   Mass: 2000
   Car3DObj: {fileID: 1363621297294756806, guid: 5ebc638e47942ea4eaa2aff6460e9469, type: 3}
+  _coastPoint: 0
