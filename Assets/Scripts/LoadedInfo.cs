@@ -24,7 +24,7 @@ public class PlayerInfo
 
     public int _lastTakedCar = 0;
 
-    public int[] _statusCars = { 1, 0, 0, 0, 0 ,0,0}; // 0 не куплено
+    public int[] _statusCars = { 1, 0, 0, 0, 0 ,0,0,1}; // 0 не куплено
 
     public int version = 1;
 }

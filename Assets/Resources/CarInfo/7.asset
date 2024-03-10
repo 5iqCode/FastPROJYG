@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79f4d0fbef6dc34c815d881222f4131, type: 3}
-  m_Name: 4
+  m_Name: 7
   m_EditorClassIdentifier: 
-  Name: Supra
+  Name: 2113
   CircleSpeed: 5000
   BreakValue: 150
   EulerRotate: 70
   Mass: 2000
-  Car3DObj: {fileID: 2778293113835704724, guid: 564d1ba9cd7572144a2cb6d7b229516c, type: 3}
+  Car3DObj: {fileID: 5757453837435337426, guid: 8f219ac8a00f6a84faff77ef9fe1175f, type: 3}
   _coastPoint: 0

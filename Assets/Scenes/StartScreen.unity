@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.54345286, g: 0.53889024, b: 0.53516257, a: 1}
+  m_IndirectSpecularColor: {r: 0.54353774, g: 0.5391247, b: 0.53527606, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e699e94c7ef50284b94b786c79306cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCar: 6
+  _maxCar: 7
   _parentCar: {fileID: 1563089547}
   _player: {fileID: 736463245}
   _PointsText: {fileID: 883149772}
@@ -3666,7 +3666,7 @@ MonoBehaviour:
     lastPlayingMusic: 0
     musicOnPause: 1
     _lastTakedCar: 0
-    _statusCars: 01000000000000000000000000000000000000000000000000000000
+    _statusCars: 0100000000000000000000000000000000000000000000000000000001000000
     version: 1
   _carInfo: {fileID: 0}
   isMobile: 0
